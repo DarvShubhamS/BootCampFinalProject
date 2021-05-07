@@ -1,0 +1,54 @@
+<!-- search bar component -->
+
+<app-search></app-search>
+
+<!-- displaying all products -->
+
+<section class="products d-flex flex-wrap justify-content-center">
+    <article class="card d-flex flex-row " *ngFor="let item of products; let i = index">
+        <div class="card__img">
+            <img src="../../../assets/products_images/{{products[i].name}}.jpg" class="card-img" alt="...">
+            <div class="button">
+                <button (click)="addCart(products[i].id)" data-toggle="modal" data-target="#addedToCartModel"> ADD TO
+                    CART
+                </button>
+            </div>
+        </div>
+
+
+        <div class="card-body">
+            <h5 class="card-title">{{products[i].name}}</h5>
+            <p class="card-text">{{products[i].description}}</p>
+            <ngb-rating [max]="5" [(rate)]="products[i].averageRating" [readonly]="true"></ngb-rating>
+            <br>
+            <a routerLink="/product/{{products[i].id}}" class="btn card-body__button">See Product Details</a>
+            <br>
+            <br>
+            <button class="btn btn-warning mobile_cart_add" data-toggle="modal" data-target="#addedToCartModel"
+                (click)="addCart(products[i].id)"> ADD TO
+                CART
+            </button>
+        </div>
+
+    </article>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addedToCartModel" tabindex="-1" role="dialog" aria-labelledby="addedToCartModelLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addedToCartModelLabel">Item Added Successfully</h5>
+                </div>
+                <div class="modal-body">
+                    Item Added To Cart Successfully......
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>

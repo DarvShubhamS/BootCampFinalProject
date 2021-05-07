@@ -1,0 +1,77 @@
+<header>
+    <nav class="d-flex justify-content-between align-items-center">
+
+        <!-- ham icon visible on mobile devices -->
+        <button id="ham" (click)="side_open()">
+            <img src="../../../../assets/hamburger.png" alt="ham icon">
+        </button>
+
+        <!-- brand logo -->
+        <a routerLink="">
+            <h2>ShopKar</h2>
+        </a>
+
+        <!-- main navigation -->
+        <ul>
+            <li class="nav-item">
+                <a routerLink="">Home</a>
+            </li>
+
+            <li>
+                <a routerLink="about-us">About</a>
+            </li>
+
+            <li>
+                <a routerLink="">Shop</a>
+            </li>
+
+            <li>
+                <a routerLink="help">Help</a>
+            </li>
+
+            <li>
+                <button (click)="redirectTo()" *ngIf="cartService.visiblity">
+                    Your Cart
+                    <img src="../../../../assets/shopping-cart.png" alt="">
+                    ({{items}})
+                </button>
+            </li>
+        </ul>
+
+        <!-- cart button -->
+        <button class="cart_bttn" (click)="redirectTo()">
+            <img src="../../../../assets/shopping-cart.png" alt="">
+            ({{items}})
+        </button>
+
+        <!-- sidebar menu -->
+        <aside id="sidebar">
+            <ul id="sidebar__nav">
+                <li class="nav-item">
+                    <a routerLink="" (click)="side_close()">Home</a>
+                </li>
+
+                <li>
+                    <a routerLink="about-us" (click)="side_close()">About</a>
+                </li>
+
+                <li>
+                    <a routerLink="" (click)="side_close()">Shop</a>
+                </li>
+
+                <li>
+                    <a routerLink="help" (click)="side_close()">Help</a>
+                </li>
+
+                <li>
+                    <button (click)="side_close()">
+                        X
+                    </button>
+                </li>
+
+            </ul>
+        </aside>
+
+
+    </nav>
+</header>

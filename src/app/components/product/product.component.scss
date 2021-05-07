@@ -1,0 +1,178 @@
+@import '../../../mixins';
+
+.product {
+    height: auto;
+}
+
+
+.container {
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+    @include media(768px) {
+        margin-top: 20px;
+    }
+  
+}
+
+.carousel-inner img {
+    width: 400px;
+    height: 400px;
+}
+
+#custCarousel .carousel-indicators {
+    position: static;
+    margin-top: 20px;
+    width: 80%;
+
+}
+
+#custCarousel .carousel-indicators>li {
+    width: 100px
+}
+
+#custCarousel .carousel-indicators li img {
+    display: block;
+    opacity: 0.5;
+    height: 90px;
+    width: 90px;
+    border: 1px solid lightgray;
+}
+
+#custCarousel .carousel-indicators li.active img {
+    opacity: 1
+}
+
+#custCarousel .carousel-indicators li:hover img {
+    opacity: 0.75
+}
+
+
+.carousel-item img {
+    width: 80%;
+    border: 1px solid lightgrey;
+    border-radius: 24px;
+
+    @include media(768px) {
+        width: 90%;
+    }
+  
+}
+
+.product {
+    .product__info {
+        max-width: 1200px;
+        margin: 0 auto;
+
+      
+
+        #mobile_header {
+            display: none;
+
+            @include media(768px) {
+                display: block;
+                margin: 0 auto;
+                margin-top: 20px;
+                font-size: 1.3rem;
+            }
+        }
+
+        h1 {
+            @include media(768px) {
+                display: none;
+            }
+        }
+
+        @include media(768px) {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .product__description {
+
+            @include media(768px) {
+                text-align: center;
+            }
+
+            ngb-rating{
+                margin-right: 50px;
+            }
+            form {
+                margin-top: 20px;
+
+                @include media(768px) {
+                    width: 80%;
+                    margin: 0 auto;
+                }
+
+                fieldset {
+
+                    @include media(768px) {
+                       margin-top: 20px;
+                    }
+                }
+
+                #warning {
+                    color: red;
+                }
+
+            }
+
+            p {
+                margin-top: 20px;
+            }
+
+
+            .model {
+                width: 120px;
+            }
+
+           
+        }
+    }
+
+    .product__reviews {
+        max-width: 1200px;
+        margin: 0 auto;
+
+        h3  {
+            @include media(768px) {
+                text-align: center;
+            }
+        }
+        article {
+            margin-bottom: 30px;
+            border: 1px solid lightgrey;
+            padding: 20px;
+            box-shadow: 5px 5px lightgrey;
+            border-radius: 10px;
+
+            .review_users_container {
+                flex-basis: 12%;
+
+                .review_user {
+                    width: 40%;
+                }
+            }
+    
+            p {
+                flex-basis: 80%;
+
+                @include media(768px) {
+                   flex-basis: 45%;
+                }
+            }
+        }
+
+            img {
+                height: 50px;
+                width: 50px; 
+                vertical-align: middle;             
+            }
+    
+    }
+}
+
+
+
+

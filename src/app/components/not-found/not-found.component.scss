@@ -1,0 +1,22 @@
+@import '../../../mixins';
+
+.main_not_found_container {
+    text-align: center;
+    background: #57CEA4;
+    margin: 0 auto;
+    height: 95vh;
+
+    @include media(768px) {
+        padding: 20px;
+    }
+
+    #status_code {
+        font-size: 25rem;
+        color: white;
+
+
+        @include media(768px) {
+            font-size: 7rem;
+        }
+    }
+}

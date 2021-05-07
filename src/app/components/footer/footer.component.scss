@@ -1,0 +1,26 @@
+footer {
+    background-color: #000000;
+    padding: 30px;
+    ul {
+
+        li:last-child {
+            border: none;
+        }
+
+        li {
+            list-style: none;
+            border-right: 1px solid black;
+        }
+    }
+
+    a {
+        padding: 20px;
+        color: white;
+    }
+
+    p {
+        margin-bottom: 0;
+        color: white;
+       
+    }
+}

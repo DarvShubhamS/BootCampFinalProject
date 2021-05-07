@@ -1,0 +1,321 @@
+@import '../../../mixins';
+
+.cart {
+
+height: 100vh;
+padding: 50px;
+
+@include media(768px) {
+    padding: 20px;
+    height: auto;
+}
+
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    @include media(768px) {
+        text-align: center;
+    }
+
+    ul {
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+
+        a {
+            text-decoration: none;
+        }
+    }
+
+    .set-font-weight {
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: black;
+
+        @include media(768px) {
+            font-size: 1rem;
+        }
+    }
+
+    .set-normal {
+        color: gray;
+    }
+}
+
+
+.cart_container {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    form {
+        width: 60%;
+
+        @include media(768px) {
+            width: 100%;
+        }
+    }
+
+
+}
+
+
+
+.step_form_elements {
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #DADCE0;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 10px 10px 5px #dadce0;
+    margin: 20px 0px 20px 0px;
+
+    @include media(768px) {
+        padding: 20px;
+    }
+
+    img {
+    width: 150px;
+    border-radius: 50%;
+    padding: 10px;
+    }
+
+    .cart_items__details {
+        width: auto;
+
+        @include media(768px) {
+            flex-wrap: wrap;
+        }
+    }
+
+    .cart_items__quantity {
+        width: 15%;
+
+        input[type=number] {
+            text-align: center;
+        }
+    }
+
+    .btn-delete {
+        a {
+            cursor: pointer;
+        }
+       img {
+           height: 70px;
+           width: 70px;
+       }
+    }
+   
+}
+
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+
+   opacity: 1;
+
+}
+
+
+
+
+
+
+.step_2 {
+    .step_2__controls {
+       margin-top: 20px;
+
+       #firstname,#lastname,#country,#city,#phone,#postal {
+           width: 48%;
+       }
+
+       #addressOne,#addressTwo {
+           width: 100%;
+       }
+
+
+    }
+
+    .mode_delivery {
+           .delivery {
+               display: flex;
+               align-items: center;
+               justify-content: space-between;
+               border: 1px solid #ced4da;
+               padding: 10px;
+            
+           }
+
+           
+    }
+
+    input[type=radio], input[type=checkbox] {
+        margin-right: 20px;
+    }
+
+
+
+}
+
+
+
+.step_3 {
+
+    .payment_paypal,.payment_credit {
+        border: 1px solid #ced4da;
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    input[type=radio], input[type=checkbox] {
+        margin-right: 20px;
+    }
+
+    .card_number {
+        width: 40%;
+
+        @include media(768px) {
+            width: 100%;
+        }
+        
+    }
+
+    .expiry {
+        justify-content: center;
+        .month,.year {
+            width: 25%;
+
+            @include media(768px) {
+                width: 45%;
+            }
+        }
+
+        .expiry-group {
+            justify-content: center;
+            @include media(768px) {
+                justify-content: space-between;
+            }
+        }
+
+    }
+    .cvc {
+        width: 15%;
+
+        @include media(768px) {
+            width: 45%;
+        }
+    }
+
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button {  
+
+        display:none;
+
+    }
+
+    
+
+    .group-card {
+
+        @include media(768px) {
+            flex-wrap: wrap;
+        }
+    }
+}
+
+
+
+.Summary {
+   width: 30%;
+   background: #3D3D3D;
+   color: wheat;
+   padding: 20px;
+   box-shadow: -10px 0px;
+
+   @include media(768px) {
+    width: 90%;
+    margin: 0 auto;
+   }
+
+   hr {
+       background-color: #DADCE0;
+   }
+
+   #coupon {
+        border-radius: 25px;
+        height: 35px;
+        margin-right: 20px;
+        text-align: center;
+
+        @include media(768px) {
+            display: block;
+            margin: 0 auto;
+        }
+   }
+
+
+   .Summary_discount {
+
+      @include media(768px) {
+            text-align: center;
+      }
+
+
+      button {
+        @include media(768px) {
+            margin-top: 20px;
+        }
+      }
+   }
+
+
+}
+
+
+.button_controls {
+   margin-top: 20px;
+
+   button {
+    margin-right: 20px;
+   }
+  
+}
+
+
+.product_summary {
+    margin-top: 20px;
+    img {
+     width: 40%;
+     border-radius: 50%;
+    }
+
+    div {
+        width: 50%;
+    }
+}
+
+
+
+.empty_cart {
+   text-align: center;
+   height: 95vh;
+
+   .btn-info {
+    box-shadow: 0px 12px 5px black;
+    margin-bottom: 20px;
+    border-radius: 25px;
+    padding: 10px;
+   }
+
+   img {
+    @include media(768px) {
+        width: 100%;
+    }
+   }
+}
+
+
+}

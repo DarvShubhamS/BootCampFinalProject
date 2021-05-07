@@ -1,0 +1,111 @@
+<section class="OrderSuccessful">
+    <h2>Thank You! Your Order Has Been Placed</h2>
+    <h2>And we're just as excited as you are.</h2>
+    <button routerLink="/" class="btn btn-warning">Continue Shopping</button>
+
+    <h5>Check Your Order Status</h5>
+
+    <section class="OrderSummary">
+
+        <!-- Displaying Items Bought  -->
+
+        <h4>Product Detail</h4>
+        <table class="table table-responsive">
+            <tr>
+                <th scope="col">Product Name</th>
+                <th scope="col">Product Model</th>
+                <th scope="col">Product Quantity</th>
+                <th scope="col">Product Price</th>
+            </tr>
+
+            <tr *ngFor="let product of products_ordered ">
+                <td>{{product.product_name}}</td>
+                <td>{{product.product_model}}</td>
+                <td>{{product.product_quantity}}</td>
+                <td>{{product.product_total}}</td>
+
+            </tr>
+        </table>
+
+        <!-- Displaying Billing Details  -->
+
+        <h4>Billing Amount Detail</h4>
+        <table class="table">
+            <tr>
+                <th scope="col">Subtotal</th>
+                <th scope="col">Shipping</th>
+                <th scope="col">Tax</th>
+                <th scope="col">Total</th>
+            </tr>
+
+            <tr>
+                <td>{{bill_details.subtotal}}</td>
+                <td>{{bill_details.shipping}}</td>
+                <td>{{bill_details.taxes}}</td>
+                <td>{{bill_details.total}}</td>
+            </tr>
+        </table>
+
+        <!-- Displaying Shipping Details -->
+
+        <h4>SHIPPING ADDRESS DETAIL</h4>
+        <table class="table table-responsive">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>Country</th>
+                <th>City</th>
+                <th>Postal Code</th>
+                <th>Phone</th>
+                <th>Shipping Detail</th>
+            </tr>
+
+            <tr>
+                <td>{{shipping_details.firstname}}</td>
+                <td>{{shipping_details.lastname}}</td>
+                <td>{{shipping_details.addressOne}}</td>
+                <td>{{shipping_details.Country}}</td>
+                <td>{{shipping_details.City}}</td>
+                <td>{{shipping_details.postalCode}}</td>
+                <td>{{shipping_details.Phone}}</td>
+                <td *ngIf="shipping_details.Delivery == 0">
+                    Free Delivery
+                </td>
+                <td *ngIf="shipping_details.Delivery == 20">
+                    One Day Delivery
+                </td>
+            </tr>
+        </table>
+
+
+        <div class="Payment_Details">
+
+            <!--Displaying If Order Paid Via Debit Card  -->
+
+            <div class="Payment_Details_Card" *ngIf="payment_details_mode === 'Credit Card' ">
+                <h4>Order Paid Via:- Credit Card</h4>
+                <table class="table">
+                    <tr>
+                        <th>Name on Card</th>
+                        <th>Card Number</th>
+                    </tr>
+                    <tr>
+                        <td>{{payment_details.nameOnCard}}</td>
+                        <td>{{payment_details.cardNumber}}</td>
+                    </tr>
+                </table>
+
+            </div>
+
+            <!-- Displaying If Order Paid Via Paypal -->
+
+            <div class="Payment_Details_Paypal" *ngIf="payment_details_mode === 'Paypal' ">
+                <h4>Order Paid Via:- Paypal</h4>
+            </div>
+
+        </div>
+    </section>
+
+
+</section>

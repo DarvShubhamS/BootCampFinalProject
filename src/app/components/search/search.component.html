@@ -1,0 +1,45 @@
+<!-- search bar component -->
+
+<section class="search">
+
+    <h2>Get Best Deals @ Amazing Price!</h2>
+    <h4>What Are You Looking For ?</h4>
+
+    <input type="text" [(ngModel)]="searchValue" (ngModelChange)="changed($event)" class="form-control" type="search"
+        placeholder="Search Product" aria-label="Search" [disabled]="setDisabled">
+
+    <!-- loading spinner     -->
+
+    <div class="spinner-border text-warning loader" role="status" *ngIf="loading">
+        <span class="sr-only">Loading...</span>
+    </div>
+
+    <!-- rendering search result if found -->
+
+    <article class="card d-flex flex-row justify-content-between" *ngIf="res">
+        <div class="card__img">
+            <img src="../../../assets/products_images/{{res.name}}.jpg" class="card-img" alt="...">
+            <div class="btn btn-danger" (click)="clear()">Clear Search Result</div>
+        </div>
+
+        <div class="card-body">
+            <h5 class="card-title">{{res.name}}</h5>
+            <p class="card-text">{{res.description}}</p>
+            <ngb-rating [max]="5" [(rate)]="res.averageRating" [readonly]="true"></ngb-rating>
+            <br>
+            <a routerLink="/product/{{res.id}}" class="btn card-body__button">See Product Details</a>
+        </div>
+
+    </article>
+
+    <!-- rendering if no search result found -->
+
+    <div class="search__not-found" *ngIf="notFound">
+        <p>Ops! No Item Found With That Name!</p>
+        <button class="btn btn-danger" (click)="hideNotFound()">Ok</button>
+    </div>
+
+
+
+
+</section>

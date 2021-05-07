@@ -1,0 +1,153 @@
+{
+  "orders": [
+    {
+      "items_ordered": [
+        {
+          "product_name": "Google Twill Cap",
+          "product_model": "blue",
+          "product_price": "10.99",
+          "product_description": "Classic urban styling distinguishes this Google cap. Retains its shape, even when not being worn.",
+          "product_quantity": 1,
+          "product_id": "GGOEGHPB071610",
+          "product_total": 10.99
+        }
+      ],
+      "Shipping_details": {
+        "firstname": "Shubham",
+        "lastname": "Saxena",
+        "addressOne": "C47 PUSHPANJALI ENCLAVE PITAMPURA",
+        "addressTwo": "C47 PUSHPANJALI ENCLAVE PITAMPURA",
+        "Country": "India",
+        "City": "NEW DELHI",
+        "postalCode": 110034,
+        "Phone": "9953128226",
+        "Delivery": "0"
+      },
+      "Payment_details": {
+        "PaymentMode": "Paypal",
+        "nameOnCard": "",
+        "cardNumber": "",
+        "expirationMonth": "",
+        "expirationYear": "",
+        "cardCVVNumber": ""
+      },
+      "bill_summary": {
+        "subtotal": 10.99,
+        "shipping": 0,
+        "taxes": 12,
+        "total": 23
+      },
+      "payment_status": "paid",
+      "id": 1
+    },
+    {
+      "items_ordered": [
+        {
+          "product_name": "Google Twill Cap",
+          "product_model": "blue",
+          "product_price": "10.99",
+          "product_description": "Classic urban styling distinguishes this Google cap. Retains its shape, even when not being worn.",
+          "product_quantity": 5,
+          "product_id": "GGOEGHPB071610",
+          "product_total": 54.95
+        },
+        {
+          "product_name": "Google Standard Onesie Grey",
+          "product_model": "large",
+          "product_price": "25.99",
+          "product_description": "This Google onesie moves with your baby with non-binding sleeves for full freedom of movement.",
+          "product_quantity": 1,
+          "product_id": "GGOEGXXX0887",
+          "product_total": 25.99
+        }
+      ],
+      "Shipping_details": {
+        "firstname": "Shubham",
+        "lastname": "Saxena",
+        "addressOne": "C47 PUSHPANJALI ENCLAVE PITAMPURA",
+        "addressTwo": "C47 PUSHPANJALI ENCLAVE PITAMPURA",
+        "Country": "India",
+        "City": "NEW DELHI",
+        "postalCode": 110034,
+        "Phone": "9953128226",
+        "Delivery": "20"
+      },
+      "Payment_details": {
+        "PaymentMode": "Paypal",
+        "nameOnCard": "",
+        "cardNumber": "",
+        "expirationMonth": "",
+        "expirationYear": "",
+        "cardCVVNumber": ""
+      },
+      "bill_summary": {
+        "subtotal": 80.94,
+        "shipping": 20,
+        "taxes": 12,
+        "total": 113
+      },
+      "payment_status": "paid",
+      "id": 2
+    },
+    {
+      "items_ordered": [
+        {
+          "product_name": "Google Twill Cap",
+          "product_model": "red",
+          "product_price": "10.99",
+          "product_description": "Classic urban styling distinguishes this Google cap. Retains its shape, even when not being worn.",
+          "product_quantity": 1,
+          "product_id": "GGOEGHPB071610",
+          "product_total": 10.99
+        }
+      ],
+      "Shipping_details": {
+        "firstname": "Shubham",
+        "lastname": "Saxena",
+        "addressOne": "C47 PUSHPANJALI ENCLAVE PITAMPURA",
+        "addressTwo": "testing tesing testing",
+        "Country": "India",
+        "City": "NEW DELHI",
+        "postalCode": 110034,
+        "Phone": "9953128226",
+        "Delivery": "0"
+      },
+      "Payment_details": {
+        "PaymentMode": "Credit Card",
+        "nameOnCard": "samuel",
+        "cardNumber": 1232323232323333,
+        "expirationMonth": 12,
+        "expirationYear": 2022,
+        "cardCVVNumber": 355
+      },
+      "bill_summary": {
+        "subtotal": 10.99,
+        "shipping": 0,
+        "taxes": 12,
+        "total": 23
+      },
+      "payment_status": "paid",
+      "id": 3
+    }
+  ],
+  "queries": [
+    {
+      "Name": "Shubham Saxena",
+      "email": "shubhsaxena22@gmail.com",
+      "query": "test",
+      "id": 1
+    },
+    {
+      "Name": "ABHAY SAXENA",
+      "email": "abhaysaxena2002@gmail.com",
+      "query": "I want to be a seller",
+      "id": 2
+    },
+    {
+      "Name": "tester test",
+      "email": "tester@tester.com",
+      "query": "I want my refund asap",
+      "id": 3
+    }
+  ]
+}

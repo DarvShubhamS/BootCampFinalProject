@@ -1,0 +1,395 @@
+<section class="cart">
+
+    <!-- multistep navbar -->
+
+    <nav *ngIf="cart_items.length != 0">
+        <ul>
+            <li>
+                <a [className]="step == 1 ? 'set-font-weight' : 'set-normal'">
+                    1. Shopping Cart
+                </a>
+            </li>
+            <li>
+                <a [className]="step == 2 ? 'set-font-weight' : 'set-normal'">
+                    2. Shipping Details
+                </a>
+            </li>
+            <li>
+                <a [className]="step == 3 ? 'set-font-weight' : 'set-normal'">
+                    3. Payment Options
+                </a>
+            </li>
+        </ul>
+        <hr>
+    </nav>
+
+    <section class="cart_container d-flex justify-content-between flex-wrap" *ngIf="cart_items.length != 0">
+        <form (ngSubmit)="submit()" [formGroup]="multiStep">
+
+            <!-- step 1 showing all items added to cart  -->
+
+            <section class="step_1" *ngIf="step == 1" formGroupName="cartDetails">
+                <h3>Your Shopping Cart</h3>
+                <hr>
+                <div>
+
+                    <div *ngFor="let product of cart_items; let i = index" class="step_form_elements">
+
+                        <div class="cart_items__details d-flex justify-content-between ">
+                            <img src="../../../../assets/products_images/{{product.product_name}}.jpg" alt="">
+
+                            <div>
+                                <h4>{{product.product_name}}</h4>
+                                <p>{{product.product_description}}</p>
+                                <h4>${{product.product_price}}</h4>
+                            </div>
+                        </div>
+
+                        <div class="cart_items__quantity">
+                            <input type="number" [(ngModel)]="product.product_quantity" min="1" max="5"
+                                (ngModelChange)="modelChanged($event,product.product_price,product.product_id)"
+                                [ngModelOptions]="{standalone: true}" />
+                        </div>
+
+                        <div class="btn-delete">
+                            <a (click)="deleteItem(i)">
+                                <img src="../../../../assets/delete-icon.png" alt="delete button">
+                            </a>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+            <!-- step 2 shipping details form -->
+
+            <section class="step_2" *ngIf="step == 2" formGroupName="shippingDetails">
+                <div>
+                    <h3>Shipping Details</h3>
+                    <hr>
+                    <div class="step_2__controls">
+
+                        <div class="d-flex justify-content-between">
+
+                            <div id="firstname">
+                                <input class="form-control" type="text" name="firstname" formControlName="firstname"
+                                    placeholder="firstname"
+                                    [ngClass]="{ 'is-invalid': (shipping_control.firstname.dirty || shipping_control.firstname.touched) && shipping_control.firstname.errors }">
+                                <div *ngIf="!shipping_control.firstname.valid && (shipping_control.firstname.dirty || shipping_control.firstname.touched)"
+                                    class="invalid-feedback">
+                                    <div *ngIf="shipping_control.firstname.errors" class="alert alert-danger">This Field
+                                        is Required
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group" id="lastname">
+                                <input class="form-control" type="text" name="lastname" formControlName="lastname"
+                                    placeholder="lastname"
+                                    [ngClass]="{ 'is-invalid': (shipping_control.lastname.dirty || shipping_control.lastname.touched) && shipping_control.lastname.errors }">
+                                <div *ngIf="!shipping_control.lastname.valid && (shipping_control.lastname.dirty || shipping_control.lastname.touched)"
+                                    class="invalid-feedback">
+                                    <div *ngIf="shipping_control.lastname.errors" class="alert alert-danger">This Field
+                                        is Required
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="addressOne" id="addressOne"
+                                formControlName="addressOne" placeholder="address One"
+                                [ngClass]="{ 'is-invalid': (shipping_control.addressOne.dirty || shipping_control.addressOne.touched) && shipping_control.addressOne.errors }">
+                            <div *ngIf="!shipping_control.addressOne.valid && (shipping_control.addressOne.dirty || shipping_control.addressOne.touched)"
+                                class="invalid-feedback">
+                                <div *ngIf="shipping_control.addressOne.errors" class="alert alert-danger">Address
+                                    cannot be less than
+                                    20
+                                    characters and more than 100 characters</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="addressTwo" id="addressTwo"
+                                formControlName="addressTwo" placeholder="address Two"
+                                [ngClass]="{ 'is-invalid': (shipping_control.addressTwo.dirty || shipping_control.addressTwo.touched) && shipping_control.addressTwo.errors }">
+                            <div *ngIf="!shipping_control.addressTwo.valid && (shipping_control.addressTwo.dirty || shipping_control.addressTwo.touched)"
+                                class="invalid-feedback">
+                                <div *ngIf="shipping_control.addressTwo.errors" class="alert alert-danger">Address
+                                    cannot be less than
+                                    20
+                                    characters and more than 100 characters</div>
+                            </div>
+                        </div>
+
+
+                        <div class="d-flex justify-content-between">
+
+                            <div class="form-group" id="country">
+                                <select name="country" formControlName="Country" class="form-control">
+                                    <option value="India">India</option>
+                                    <option value="Paksitan">Paksitan</option>
+                                </select>
+
+
+                            </div>
+
+
+                            <div class="form-group" id="city">
+                                <input class="form-control" type="text" name="City" formControlName="City"
+                                    placeholder="City"
+                                    [ngClass]="{ 'is-invalid': (shipping_control.City.dirty || shipping_control.City.touched) && shipping_control.City.errors }">
+                                <div *ngIf="!shipping_control.City.valid && (shipping_control.City.dirty || shipping_control.City.touched)"
+                                    class="invalid-feedback">
+                                    <div *ngIf="shipping_control.City.errors" class="alert alert-danger">This Field
+                                        cannot be left <br>
+                                        empty</div>
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+
+                            <div class="form-group" id="postal">
+                                <input class="form-control" type="number" name="postalCode" formControlName="postalCode"
+                                    placeholder="postal code"
+                                    [ngClass]="{ 'is-invalid': (shipping_control.postalCode.dirty || shipping_control.postalCode.touched) && shipping_control.postalCode.errors }">
+                                <div *ngIf="!shipping_control.postalCode.valid && (shipping_control.postalCode.dirty || shipping_control.postalCode.touched)"
+                                    class="invalid-feedback">
+                                    <div *ngIf="shipping_control.postalCode.errors" class="alert alert-danger">Please
+                                        Enter Valid
+                                        Postal
+                                        Code</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="phone">
+                                <input class="form-control" type="tel" name="Phone" placeholder="Phone"
+                                    formControlName="Phone"
+                                    [ngClass]="{ 'is-invalid': (shipping_control.Phone.dirty || shipping_control.Phone.touched) && shipping_control.Phone.errors }">
+                                <div *ngIf="!shipping_control.Phone.valid && (shipping_control.Phone.dirty || shipping_control.Phone.touched)"
+                                    class="invalid-feedback">
+                                    <div *ngIf="shipping_control.Phone.errors" class="alert alert-danger">Please Enter
+                                        Valid Phone
+                                        Number
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="d-flex justify-content-between mode_delivery">
+
+                            <div class="delivery">
+                                <input type="radio" name="Delivery" id="free" value=0 formControlName="Delivery"
+                                    (input)="set_ShippingFree()">
+                                <div class="mode_delivery__content">
+                                    <label for="free">Free Delivery</label>
+                                    <p>Between 2-5 working Days</p>
+                                </div>
+                            </div>
+
+                            <div class="delivery">
+                                <input type="radio" name="Delivery" id="next" value=20 formControlName="Delivery"
+                                    (input)="set_ShippingNextDay()">
+                                <div>
+                                    <label for="free">Next Day Delivery - $20</label>
+                                    <p>24 Hours from checkout</p>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- step 3 payment options -->
+
+            <section class="step_3" *ngIf="step == 3" formGroupName="PaymentDetails">
+                <h3>Payment Methods</h3>
+                <hr>
+
+                <div class="payment_credit">
+                    <input type="radio" name="PaymentMode" id="credit_card" value="Credit Card"
+                        formControlName="PaymentMode">
+                    <label for="credit_card">Credit Card</label>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus doloribus minima, natus ab
+                        ut
+                        tenetur. Quis consequuntur, esse atque, ut, dicta iusto incidunt corrupti reiciendis totam vitae
+                        quia ipsa ipsam!</p>
+                    <br>
+
+                    <div class="d-flex justify-content-between group-card">
+
+                        <div class="form-group card_number">
+                            <input class="form-control" type="number" formControlName="cardNumber"
+                                placeholder="0000 0000 0000 0000"
+                                [ngClass]="{ 'is-invalid': payment_control.cardNumber.errors  && (payment_control.cardNumber.dirty || payment_control.cardNumber.touched)}">
+                            <div *ngIf="!payment_control.cardNumber.valid && (payment_control.cardNumber.dirty || payment_control.cardNumber.touched)"
+                                class="invalid-feedback">
+                                <div *ngIf="payment_control.cardNumber.errors" class="alert alert-danger">Invalid Card
+                                    Number.</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group expiry d-flex justify-content-center">
+                            <div class="d-flex expiry-group">
+                                <input class="form-control month" type="number" formControlName="expirationMonth"
+                                    placeholder="MM"
+                                    [ngClass]="{ 'is-invalid': !payment_control.expirationMonth.valid && (payment_control.expirationMonth.dirty || payment_control.expirationMonth.touched) }">
+                                <input class="form-control year" type="number" formControlName="expirationYear"
+                                    placeholder="YY"
+                                    [ngClass]="{ 'is-invalid': payment_control.expirationYear.errors && (payment_control.expirationYear.dirty || payment_control.expirationYear.touched) }">
+                            </div>
+
+                            <div *ngIf="( !payment_control.expirationMonth.valid && (payment_control.expirationMonth.dirty || payment_control.expirationMonth.touched) ) || ( !payment_control.expirationYear.valid && (payment_control.expirationYear.dirty || payment_control.expirationYear.touched))"
+                                class="invalid-feedback">
+                                <div *ngIf="payment_control.expirationMonth.errors || payment_control.expirationYear.errors"
+                                    class="alert alert-danger">
+                                    Invalid Date of Expiration.</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group cvc">
+                            <input class="form-control" type="number" formControlName="cardCVVNumber" placeholder="CVV"
+                                [ngClass]="{ 'is-invalid': payment_control.cardCVVNumber.errors && (payment_control.cardCVVNumber.dirty || payment_control.cardCVVNumber.touched) }">
+                            <div *ngIf="!payment_control.cardCVVNumber.valid && (payment_control.cardCVVNumber.dirty || payment_control.cardCVVNumber.touched)"
+                                class="invalid-feedback">
+                                <div *ngIf="payment_control.cardCVVNumber.errors" class="alert alert-danger">Invalid CVV
+                                    / CVC Number.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" type="text" formControlName="nameOnCard"
+                            placeholder="CARD HOLDER NAME"
+                            [ngClass]="{ 'is-invalid': (payment_control.nameOnCard.dirty || payment_control.nameOnCard.touched) && payment_control.nameOnCard.errors }">
+                        <div *ngIf="!payment_control.nameOnCard.valid && (payment_control.nameOnCard.dirty || payment_control.nameOnCard.touched)"
+                            class="invalid-feedback">
+                            <div *ngIf="payment_control.nameOnCard.errors" class="alert alert-danger">Invalid Cardholder
+                                Name.</div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="payment_paypal">
+                    <input type="radio" name="PaymentMode" id="paypal" value="Paypal" formControlName="PaymentMode">
+                    <label for="paypal">PayPal</label>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae aspernatur, labore eaque
+                        nulla
+                        asperiores perferendis blanditiis ipsum porro, nisi rem harum exercitationem numquam? Ad et
+                        perferendis velit quas est vel.</p>
+                </div>
+
+            </section>
+
+            <!-- multi step form buttons -->
+
+            <section class="button_controls">
+                <button type="button" *ngIf="step != 1" (click)="previous()" class="btn btn-info">Previous</button>
+                <button [disabled]="step != 1 && multiStep.get('shippingDetails').invalid" type="submit"
+                    *ngIf="step != 3 " class="btn btn-warning">Next</button>
+                <button
+                    [disabled]="multiStep.get('PaymentDetails').value.PaymentMode == 'Credit Card' && multiStep.get('PaymentDetails').invalid"
+                    type="submit" *ngIf="step == 3" class="btn btn-success">Submit</button>
+            </section>
+
+
+            <br>
+
+        </form>
+
+        <!-- checkout summary section -->
+
+        <section class="Summary" *ngIf="cart_items.length != 0">
+            <h3>Summary</h3>
+            <hr>
+            <div *ngIf="!discount_applied" class="Summary_discount">
+                <label for="coupon">ENTER COUPON CODE</label>
+                <input type="text" name="coupon" id="coupon" [(ngModel)]="coupon_code">
+
+                <button class="btn btn-info" (click)="applyCode()" type="button">Apply</button>
+
+            </div>
+
+            <div *ngIf="discount_applied">
+                <span>*Coupon Code Applied BOOTCAMP_2021</span>
+            </div>
+
+            <div *ngIf="step == 2 || step == 3">
+                <hr>
+                <div *ngFor="let product of cart_items" class="product_summary d-flex justify-content-between">
+                    <img src="../../../../assets/products_images/{{product.product_name}}.jpg" alt="">
+                    <div class="d-flex flex-column justify-content-center">
+                        <h5>{{product.product_name}}</h5>
+                        <p>${{product.product_price}}</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <h5>SUBTOTAL</h5>
+                    ${{total_price}}
+                </div>
+                <div class="d-flex justify-content-between">
+                    <h5>SHIPPING</h5>
+                    ${{shipping_price}}
+                </div>
+                <div class="d-flex justify-content-between">
+                    <h5>TAXES</h5>
+                    ${{tax_price}}
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h3>TOTAL</h3>
+                    <h5>${{final_total_price}}</h5>
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </section>
+
+
+
+    <!-- if cart is empty this section will be visible -->
+
+    <section class="empty_cart d-flex flex-column align-items-center justify-content-center"
+        *ngIf="cart_items.length == 0">
+
+        <img src="../../../../assets/cart_empty.png" alt="">
+        <br><br>
+        <h5>Looks Like You Havent't Added Anything To Your Cart Yet.</h5>
+        <p>So, What Are You Waiting For? </p>
+        <a routerLink="" class="btn btn-info">Browse Our Products</a>
+
+    </section>
+</section>

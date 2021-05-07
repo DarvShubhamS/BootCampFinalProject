@@ -1,0 +1,83 @@
+@import '../../../mixins';
+
+.search {
+    text-align: center;
+    padding: 20px;
+    background-color: #42378f;
+    background-image: linear-gradient(315deg, #42378f 0%, #f53844 74%);
+    color: aliceblue;
+    input {
+        margin: 0 auto;
+        max-width: 500px;
+        margin-bottom: 20px;
+        box-shadow: 8px 8px;
+        text-align: center;
+    }
+
+    h1,h2 {
+        @include media(768px) {
+            font-size: 1.4rem;
+        }
+    }
+
+    h4 {
+        margin-bottom: 20px;
+    }
+
+    .card {
+        max-width: 580px;
+        height: auto;
+        padding: 20px;
+        margin: 10px;
+        margin: 0 auto;
+        color: black;
+        box-shadow: 10px 10px;
+    
+        .card__img {
+            position: relative;
+    
+        }
+
+        @include media(768px)
+        {
+            flex-wrap: wrap;
+        }
+    
+    img {
+            height: 250px;
+            width: 250px;
+            padding: 12px;
+    
+    
+           
+        }
+    }
+
+    .card-body__button {
+        margin-top: 20px;
+        border: 1px solid white;
+        background-color: black;
+        color: white;
+    }
+
+
+    .search__not-found {
+        text-align: center;
+
+        button {
+            border: 1px solid white;
+        }
+    }
+
+  
+}
+
+.loader {
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+
+
+
