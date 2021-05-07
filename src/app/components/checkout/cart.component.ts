@@ -19,6 +19,8 @@ export class CartComponent implements OnInit, OnDestroy {
   discount_applied
   step: any = 1;
   coupon_code;
+  invalid_coupon: boolean = false
+  discount_value: number
   pattern_postal = "^[1-9][0-9]{5}$"
   pattern_phone = "[6-9]{1}[0-9]{9}"
 
@@ -94,7 +96,9 @@ export class CartComponent implements OnInit, OnDestroy {
     //setting up discount if discount is set
     this.discount_applied = this.cartService.coupon_code_applied
     if (this.cartService.coupon_code_applied == true) {
-      this.cartService.final_total_price = Math.round(this.cartService.final_total_price - (this.cartService.final_total_price / 100) * 15)
+      this.discount_value = Math.round((this.cartService.final_total_price / 100) * 10)
+      this.cartService.discount = this.discount_value
+      this.cartService.final_total_price = Math.round(this.cartService.final_total_price - (this.cartService.final_total_price / 100) * 10)
     }
 
     //setting up final price to be rendered 
@@ -110,6 +114,7 @@ export class CartComponent implements OnInit, OnDestroy {
     this.cart_items.map(el => {
       el.product_total = +el.product_price * el.product_quantity
     })
+
 
     this.cartTotal();
 
@@ -203,21 +208,30 @@ export class CartComponent implements OnInit, OnDestroy {
     this.cart_items = this.cartService.cartItem
     this.cartService.setCount(this.cartService.cartItem.length, 0)
     this.cartTotal()
+
+    if (this.cartService.cartItem.length === 0) {
+      this.cartService.coupon_code_applied = false
+    }
   }
+
 
 
   // function to apply coupon code
   applyCode() {
     if (this.coupon_code === "BOOTCAMP_2021") {
       this.cartService.coupon_code_applied = true
+      this.discount_value = Math.round((this.cartService.final_total_price / 100) * 10)
+      this.cartService.discount = this.discount_value
       this.discount_applied = this.cartService.coupon_code_applied
-      this.cartService.final_total_price = Math.round(this.cartService.final_total_price - (this.cartService.final_total_price / 100) * 15)
+      this.cartService.final_total_price = Math.round(this.cartService.final_total_price - (this.cartService.final_total_price / 100) * 10)
       this.final_total_price = this.cartService.final_total_price
 
     }
     else {
-      alert("coupon code not valid")
+      this.coupon_code = ""
+      this.invalid_coupon = true
       this.cartService.coupon_code_applied = false
+      window.scrollTo(0, 0)
     }
   }
 

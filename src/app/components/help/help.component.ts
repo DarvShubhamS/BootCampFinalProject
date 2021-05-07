@@ -12,13 +12,15 @@ export class HelpComponent implements OnInit {
 
   constructor(private httpService: HttpService, private routerService: Router) { }
 
+  showAlert: boolean = false;
+
   ngOnInit(): void {
   }
 
   submitQuery(formData) {
     this.httpService.postQuery(formData.value).subscribe(res => {
-      alert("Query Submitted Suceesfully....")
-      this.routerService.navigateByUrl("")
+      formData.reset()
+      this.showAlert = true
 
     }, err => {
       console.log(err)

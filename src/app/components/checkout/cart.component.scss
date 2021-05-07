@@ -4,6 +4,9 @@
 
 height: 100vh;
 padding: 50px;
+overflow: auto;
+
+
 
 @include media(768px) {
     padding: 20px;
@@ -48,6 +51,7 @@ nav {
 .cart_container {
     max-width: 1200px;
     margin: 0 auto;
+    height: 90%;
 
     form {
         width: 60%;
@@ -125,6 +129,11 @@ input[type=number]::-webkit-outer-spin-button {
 
 
 .step_2 {
+
+    .step_2__container {
+        padding: 5px;
+    }
+
     .step_2__controls {
        margin-top: 20px;
 
@@ -143,11 +152,22 @@ input[type=number]::-webkit-outer-spin-button {
            .delivery {
                display: flex;
                align-items: center;
-               justify-content: space-between;
                border: 1px solid #ced4da;
-               padding: 10px;
+               padding: 20px;
+               font-size: 16px;
+               width: 40%;
+
+
+               @include media(768px) {
+                   width: 100%;
+                   margin-top: 20px;
+               }
             
            }
+
+           @include media(768px) {
+            flex-direction: column;
+        }
 
            
     }
@@ -240,6 +260,13 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0 auto;
    }
 
+
+   .summary_order {
+       h5 {
+           color: white;
+       }
+   }
+
    hr {
        background-color: #DADCE0;
    }
@@ -249,6 +276,7 @@ input[type=number]::-webkit-outer-spin-button {
         height: 35px;
         margin-right: 20px;
         text-align: center;
+        vertical-align: middle;
 
         @include media(768px) {
             display: block;
@@ -319,3 +347,6 @@ input[type=number]::-webkit-outer-spin-button {
 
 
 }
+
+
+::-webkit-scrollbar {display:none;}

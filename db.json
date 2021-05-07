@@ -128,6 +128,46 @@
       },
       "payment_status": "paid",
       "id": 3
+    },
+    {
+      "items_ordered": [
+        {
+          "product_name": "Google Twill Cap",
+          "product_model": "red",
+          "product_price": "10.99",
+          "product_description": "Classic urban styling distinguishes this Google cap. Retains its shape, even when not being worn.",
+          "product_quantity": 1,
+          "product_id": "GGOEGHPB071610",
+          "product_total": 10.99
+        }
+      ],
+      "Shipping_details": {
+        "firstname": "Shubham",
+        "lastname": "Saxena",
+        "addressOne": "C47 PUSHPANJALI ENCLAVE PITAMPURA",
+        "addressTwo": "C47 PUSHPANJALI ENCLAVE PITAMPURA",
+        "Country": "India",
+        "City": "NEW DELHI",
+        "postalCode": 110034,
+        "Phone": "9953128226",
+        "Delivery": "20"
+      },
+      "Payment_details": {
+        "PaymentMode": "Paypal",
+        "nameOnCard": "",
+        "cardNumber": "",
+        "expirationMonth": "",
+        "expirationYear": "",
+        "cardCVVNumber": ""
+      },
+      "bill_summary": {
+        "subtotal": 10.99,
+        "shipping": 20,
+        "taxes": 12,
+        "total": 43
+      },
+      "payment_status": "paid",
+      "id": 4
     }
   ],
   "queries": [
@@ -136,18 +176,6 @@
       "email": "shubhsaxena22@gmail.com",
       "query": "test",
       "id": 1
-    },
-    {
-      "Name": "ABHAY SAXENA",
-      "email": "abhaysaxena2002@gmail.com",
-      "query": "I want to be a seller",
-      "id": 2
-    },
-    {
-      "Name": "tester test",
-      "email": "tester@tester.com",
-      "query": "I want my refund asap",
-      "id": 3
     }
   ]
 }

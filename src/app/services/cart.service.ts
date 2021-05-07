@@ -27,6 +27,7 @@ export class CartService {
     shipping_price: number = 0
     tax_price: number = 12
     final_total_price: number = 0
+    discount: number
     coupon_code_applied: boolean = false
 
     // setting up variable to hide cart icon from navbar
